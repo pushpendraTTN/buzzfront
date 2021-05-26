@@ -1,0 +1,68 @@
+i{
+    background: rgb(207, 207, 207);
+    border-radius: 50%;
+    padding: 8px;
+}
+
+/* utility claases */
+
+.flex-container{
+    display: flex;
+    margin: 10px 0;
+}
+
+.justify-space{
+    justify-content: space-between;
+}
+
+
+.btn-size{
+    padding: 5px 20px;
+}
+
+/* mid section */
+
+.post-person-img{
+    width: 40px;
+    border-radius: 50%;
+}
+
+.person-info{
+    display: flex;
+    font-size: small;
+}
+
+.post-info{
+    padding: 0 5px;
+}
+
+.post{
+    padding: 2%;
+    /* border: 1px solid rgb(148, 148, 148); */
+    border-radius: 5px;
+    background-color:#fff;
+    margin: 2% 0;
+}
+
+/* post view */
+
+.post-img{
+    width: 100%;
+    margin: 1% 0;
+    border-radius:5px
+}
+
+.like{
+  background: rgb(4, 58, 206);
+  color: #fff;
+}
+
+.dislike{
+    background: rgb(179, 34, 15);
+    color: #fff;
+  }
+
+.comment{
+    background-color: rgb(66, 66, 66);
+    color: #fff;
+}

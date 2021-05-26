@@ -1,0 +1,32 @@
+.profile{ 
+    text-align: center;
+    margin: 4% 0;
+}
+
+
+.bg-purple{
+    background-color: rgb(24, 157, 197);
+    width: 100%;
+    height: 120px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius:5px ;
+}
+
+.feed-profile{
+    position: relative;
+    padding: 20% 2% 5%;
+}
+
+.feed-profile-img{
+    width: 50%;
+    border-radius: 50%;
+}
+
+.in-feed{
+    background-color: #fff;
+    position: relative;
+    border-radius:5px ;
+    margin: 1.2%;
+}

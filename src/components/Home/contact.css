@@ -1,0 +1,32 @@
+.contact{
+    text-align: left;
+    position: relative;
+    margin: 4% 0;
+}
+
+.in-feed{
+    background-color: #fff;
+    position: relative;
+    border-radius:5px ;
+    margin: 1.2%;
+}
+
+.contact-img{
+    width: 60px;
+    border-radius: 50%;
+}
+
+.search-icon{
+    padding:   0.7rem 5px;
+}
+
+.flex-container{
+    display: flex;
+    margin: 10px 0;
+    /* justify-content: space-between; */
+}
+
+.contact-name{
+   margin-top: 15px;
+   padding: 2px 10px;
+}

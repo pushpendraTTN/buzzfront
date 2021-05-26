@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+html,body{
+  background-color: rgba(219, 217, 217, 0.801);
+}
+
+h1,h2,h3,h4,h5,h6{
+  padding:   0.5rem 5px;
+}
+
+
+p{
+  margin: 0;
+}

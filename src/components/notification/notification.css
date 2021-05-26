@@ -1,0 +1,44 @@
+html,body{
+    background: gray;
+}
+
+.flex-container{
+    display: flex;
+    margin: 10px 0;
+}
+
+.justify-space{
+    justify-content: space-between;
+}
+
+.in-feed{
+    background-color: #fff;
+    position: relative;
+    border-radius:5px ;
+    margin: 1.2%;
+    padding: 2%;
+}
+
+.btn-post{
+    background-color: rgb(9, 106, 145);
+    color: #fff;
+}
+
+.btn-size{
+    padding: 5px 20px;
+}
+
+
+/* noti */
+
+
+.notification{
+    width: 80%;
+    margin: 10% auto;
+}
+
+.notification img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
