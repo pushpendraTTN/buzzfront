@@ -1,26 +1,3 @@
-i{
-    background: rgb(207, 207, 207);
-    border-radius: 50%;
-    padding: 8px;
-}
-
-
-/* utility claases */
-
-.flex-container{
-    display: flex;
-    margin: 10px 0;
-}
-
-.justify-space{
-    justify-content: space-between;
-}
-
-
-.btn-size{
-    padding: 5px 20px;
-}
-
 /* mid section */
 
 .post-person-img{
@@ -35,15 +12,6 @@ i{
 
 .post-info{
     padding: 0 5px;
-}
-
-.post{
-    padding: 2%;
-    /* border: 1px solid rgb(148, 148, 148); */
-    border-radius: 5px;
-    background-color:#fff;
-    margin: 2% 0;
-    text-align: left;
 }
 
 /* post view */

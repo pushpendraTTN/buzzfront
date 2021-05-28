@@ -2,8 +2,6 @@ import React,{useState,useEffect} from 'react';
 import Cookies from 'js-cookie';
 import Navbar from '../Home/navbar/navbar';
 import './notification.css';
-import AdminView from '../Admin/Admin';
-
 
 const Notify = ()=>{
     const [data,setData] = useState([]);
@@ -52,28 +50,32 @@ const Notify = ()=>{
 
     return(<>
         <Navbar />
+        <div className="parallax notification-wrapper">
+        <div className="container">     
+                            <div className="notification in-feed">
         {
+            
         data.map(item=>{
             return(
                      <>
-                        <div className="container">
-                            <div className="notification in-feed">
                                 <div className="flex-container justify-space">
                                     <div>
-                                        <img src={item.profilePic} alt="sumit" />
-                                        <span>{item.name} sent You a Friend Request.</span>
-                                </div>
-                                <button className="btn btn-post btn-primary btn-size"
-                                onClick={()=>{acceptRequest(item._id)}}
-                                >Accept</button>
+                                        <img className="contact-img" src={item.profilePic} alt="pic" />
+                                        <span><strong>{item.name}</strong> Sent you a Friend Request.</span>
+                                     </div>
+                                    <div>
+                                        <button className="btn-our bt-primary bt-medium"
+                                        onClick={()=>{acceptRequest(item._id)}}
+                                        >Accept</button>
+                                    </div>
                             </div>
-                        </div>
-                    </div>
                     </> 
             )
         })
     }
-    <AdminView />
+    </div>
+    </div>
+    </div>
     </>
     )
 }

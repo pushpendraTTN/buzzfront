@@ -13,12 +13,14 @@ const Navbar = (props)=>{
   const [email,setEmail] = useState('');
   const [designation,setDesignation] = useState('');
   const [website,setWebsite] = useState('');
+  const [role,setRole] = useState('');
   const userdata = {
     name,
     profile_pic,
     email,
     designation,
-    website
+    website,
+    role
   }
 
   useEffect(()=>{
@@ -33,18 +35,20 @@ const Navbar = (props)=>{
           setPic(res.data.pic);
           setEmail(res.data.email);
           setDesignation(res.data.designation);
-          setWebsite(res.data.website)
+          setWebsite(res.data.website);
+          setRole(res.data.role);
           props.updateData(userdata);
         }).catch(err=>{
           console.log(err);
         })    
       });
 
-      console.log(props.username);
-
+      const clear = ()=>{
+        console.log('logout clicked');
+      }
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-white">
-        <div className="container">
+        <div className="container-fluid">
           <Link className="navbar-brand" to="/feed"><img className="logo" src={navlogo} alt="logo"/></Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -65,7 +69,9 @@ const Navbar = (props)=>{
                 </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li><Link className="dropdown-item" to="/notification">Notification</Link></li>
-                  <li><Link className="dropdown-item" to="/logout">Logout</Link></li>
+                  <li><Link className="dropdown-item" to="/logout" 
+                  onClick={()=>{clear()}}
+                  >Logout</Link></li>
                 </ul>
               </li>
             </ul>

@@ -3,12 +3,28 @@
     color: #000;
 }
 
+.navbar{
+    padding: 0 0.5rem;
+}
+
 .navbar-brand{
     padding: 0;
     text-align: left;
 }
 
+.nav-item{
+    padding: 0 2px;
+}
 
+.nav-item i{
+    padding: 10px 0px;
+    color: #000;
+    background: none;
+}
+
+.profile-name{
+    padding: 14px 0;
+}
 
 .logo{
     width: 22%;
@@ -18,6 +34,12 @@
 /* navbar-profile-img */
 
 .navbar-profile-img{
-    width: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+}
+
+.dropdown-menu[data-bs-popper] {
+    right: 0;
+    left: auto;
 }

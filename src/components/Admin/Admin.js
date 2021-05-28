@@ -9,7 +9,7 @@ const AdminView = (props)=>{
     const [render,setRender] = useState(false);
 
     useEffect(()=>{
-        axios.get('http://localhost:8000/viewallpost',{
+        axios.get('http://localhost:8000/admin/viewallpost',{
             headers:{
                 "Content-Type":"application/json",
                 "Authorization":"Bearer "+Cookies.get('token')
@@ -23,13 +23,18 @@ const AdminView = (props)=>{
         })    
       },[]);
 
-      const deletePost = (postid)=>{
-        fetch(`http://localhost:8000/admin/deletepost/${postid}`,{
+      const deletePost = (postId)=>{
+        fetch(`http://localhost:8000/admin/deletepost`,{
             method:"delete",
             headers:{
                 'Content-Type':'application/json',
                 'Authorization':'Bearer '+Cookies.get('token')
-            }
+            },
+            body:JSON.stringify(
+                {
+                    postId
+                }
+            )
         })
         .then(res=>res.json())
         .then(result=>{
@@ -148,7 +153,7 @@ const AdminView = (props)=>{
                                 </div>
                                 <div className="post-option">
                                     <button className="btn btn-size" onClick={()=>{deletePost(item._id)}}>
-                                <i class="far fa-trash-alt"></i>
+                                    <i className="far fa-trash-alt"></i>
                                     </button>
                                 </div>
                         </div>
@@ -178,12 +183,17 @@ const AdminView = (props)=>{
                             item.comments.map(record=>{
                                 console.log('record==>',record);
                                 return(
-                                        <div className="flex-container justify-space">
-                                        <span>{record.name}</span>
-                                        <p>{record.text}</p>
+                                    <div className="flex-container" key={record._id}>
+                                        <div className="person-info">
+                                            <img className="post-person-img"
+                                            src={record.postedBy.profilePic} 
+                                            alt="userProfile" />
+                                        </div>
                                         <div>
-                                    </div>
-                                    </div>
+                                            <p><strong>{record.postedBy.name}</strong></p>
+                                            <p className="comment-data">{record.text}</p>
+                                        </div>
+                                     </div>
                                 )
                             })
                         }
@@ -214,7 +224,7 @@ const AdminView = (props)=>{
 
 const mapStateToProps = (state)=>{
     return {
-      pic: state.pic
+      pic: state.user.pic
     }
   }
 export default connect(mapStateToProps)(AdminView);

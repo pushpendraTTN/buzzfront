@@ -42,6 +42,12 @@ const CreatePost = ()=>{
             .then(res=>res.json())
             .then(data=>{
                 setUrl(data.url);
+                {
+                    return(
+                        <div class="alert alert-success" role="alert">Sucessfully Created.</div>
+                    )
+                }
+
             })
             .catch(err=>{
                 console.log(err);
@@ -56,9 +62,14 @@ const CreatePost = ()=>{
                         placeholder="What's On Your Mind..." 
                         onChange={(e)=>{setBody(e.target.value)}}></textarea>
                         <div className="button-div">
-                            <input type="file"  className=" btn btn-post btn-size" 
-                            onChange={(e)=>{setImage(e.target.files[0])}} />
-                            <button  className="btn btn-post btn-size" onClick={()=>postImage()}>Post</button>
+                                <div  className="image-file btn-our bt-primary">
+                                    <label htmlFor="image_src" className="uplaod-file-icon"><i className="fas fa-image " ></i></label>
+                                    <input type="file"  id="image_src"  onChange={(e)=>{setImage(e.target.files[0])}} />
+                                    <span id="display-img">{image.name}</span>
+                                </div>
+                            <div>
+                            <button  className="btn-our bt-primary" onClick={()=>postImage()}>Post</button>
+                            </div>
                         </div>
                     </div>
     )

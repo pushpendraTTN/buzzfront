@@ -166,10 +166,12 @@ const Post = (props)=>{
         data.map(item=>{
             return(
                 <>
-                        <div className="post">
+                        <div className="post" key={item._id}>
                         <div className="flex-container justify-space">
                             <div className="person-info">
-                                <img className="post-person-img" src={item.postedBy.profilePic} alt="profile_pic" />
+                                <img className="post-person-img" 
+                                src={item.postedBy.profilePic} 
+                                alt="profile_pic" />
                         <div className="post-info">
                                     <strong>{item.postedBy.name}</strong>
                                     <p>{item.createdAt}</p>
@@ -192,6 +194,10 @@ const Post = (props)=>{
                                 <span>{item.comments.length}</span>
                                 <i className="far fa-comment comment"></i>
                             </div>
+                            <div>
+                                <span>{item.reportCount}</span>
+                                <i className="fas fa-ban"></i>
+                            </div>
                 </div>
 
                 <div className="flex-container justify-space">
@@ -203,9 +209,16 @@ const Post = (props)=>{
                             item.comments.map(record=>{
                                 console.log('record==>',record);
                                 return(
-                                        <div className="flex-container justify-space">
-                                        <span>{record.name}</span>
-                                        <p>{record.text}</p>
+                                        <div className="flex-container" key={record._id}>
+                                                <div className="person-info">
+                                                <img className="post-person-img"
+                                                src={record.postedBy.profilePic} 
+                                                alt="userProfile" />
+                                                </div>
+                                                <div >
+                                                <p><strong>{record.postedBy.name}</strong></p>
+                                                <p className="comment-data">{record.text}</p>
+                                                </div>
                                         <div>
                                     </div>
                                     </div>
@@ -218,17 +231,15 @@ const Post = (props)=>{
                         makeComment(e.target[0].value,item._id);
                         e.target[0].value="";
                     }}>
-                            <div className="post">
-                                    <div className="flex-container justify-space">
+                                    <div className="flex-container ">
                                         <div className="person-info">
                                              <img className="post-person-img" 
                                              src={props.pic} 
                                              alt="profile_pic" />
                                         </div>
-                                            <input type="text" class="form-control" 
+                                            <input type="text" className="form-control" 
                                             placeholder="Write a Comment..."/>
                                     </div>
-                            </div>
                     </form>
                 </div>
                 </>
@@ -240,7 +251,7 @@ const Post = (props)=>{
      
 const mapStateToProps = (state)=>{
     return {
-      pic: state.pic
+      pic: state.user.pic
     }
   }
 

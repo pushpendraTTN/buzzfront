@@ -1,0 +1,10 @@
+/* suggestion */
+
+.suggestion{
+    margin: 4% 0;
+}
+
+.contact-info{
+    display: flex;
+    width: 80%;
+}

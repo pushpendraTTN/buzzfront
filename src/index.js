@@ -3,12 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux'
+import { createStore,combineReducers,applyMiddleware,compose } from 'redux'
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import userReducer from './store/reducer/userReducer';
+import viewUserReducer from './store/reducer/viewUserReducer';
 
 
-const store = createStore(userReducer);
+const composeEnhancers = 
+(typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+
+const reducer = combineReducers({
+    user:userReducer,
+    viewuser:viewUserReducer
+  });
+
+const store = createStore(reducer,composeEnhancers(applyMiddleware(thunk)));
+
+
+// const store = createStore(userReducer);
 
 ReactDOM.render(
   <Provider store={store}>

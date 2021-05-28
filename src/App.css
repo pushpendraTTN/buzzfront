@@ -7,10 +7,117 @@ html,body{
 }
 
 h1,h2,h3,h4,h5,h6{
-  padding:   0.5rem 5px;
+  padding: 0.5rem 5px 0;
 }
+
+h3{
+  font-size: 1.5rem;
+}
+
+
+h4{
+  font-size: 1.2rem;
+}
+
+
+i{
+  background:#c9f5f8;
+  border-radius: 50%;
+  padding: 8px;
+}
+
 
 
 p{
   margin: 0;
+}
+
+
+.container{
+  width: 1250px;
+}
+
+.flex-container{
+  display: flex;
+  margin: 10px 0;
+}
+
+.justify-space{
+  justify-content: space-between;
+}
+
+/* icons */
+
+.search-icon{
+  padding:  0 5px;
+}
+
+/* btn */
+
+.btn-our{
+  padding: 4px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.post{
+  padding: 2%;
+  /* border: 1px solid rgb(148, 148, 148); */
+  border-radius: 5px;
+  background-color:#fff;
+  margin: 2% 0;
+  text-align: left;
+}
+
+.bt-primary{
+  background-color: #008f9a;
+  border: 1px solid #008f9a;
+}
+
+.bt-primary:hover{
+  background-color: #fff;
+  color:#008f9a ;
+}
+
+.outline-primary{
+  background-color: #fff;
+  border: 1px solid#008f9a;
+  color:#008f9a ;
+}
+
+.outline-primary:hover{
+  background-color:  #008f9a;
+  color: #fff;
+}
+
+.bt-medium{
+  font-size: medium;
+}
+
+
+/* contact data */
+
+.contact-img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.contact-name{
+  font-size: small;
+    margin-top: 12px;
+    margin-left: 4px;
+}
+
+.contact-btn{
+  margin-top: 7px;
+}
+
+.in-feed{
+  background-color: #fff;
+  position: relative;
+  border-radius:5px ;
+  padding:2% 3%;
 }

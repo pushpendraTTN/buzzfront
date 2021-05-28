@@ -1,17 +1,16 @@
 import React from 'react';
 import Navbar from '../Home/navbar/navbar';
+import ViewProfile from './viewProfile/viewprofile';
 import Suggestions from '../Home/suggestion/suggestions';
-import Profile from '../Profile/Profile/Profile';
-import './profile.css';
 
-const profile = ()=>{
+const viewOthersProfile = ()=>{
     return(
         <>
         <Navbar />
         <div className="container">
             <div className="row">
                 <div className="col-lg-9">
-                    <Profile />
+                   <ViewProfile />
                 </div>
                 <div className="col-lg-3">
                     <Suggestions />
@@ -22,4 +21,4 @@ const profile = ()=>{
     )
 }
 
-export default profile;
+export default viewOthersProfile;
