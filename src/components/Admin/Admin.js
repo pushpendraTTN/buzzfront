@@ -2,6 +2,7 @@ import React,{useState ,useEffect} from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import './Admin.css';
+import Moment from 'moment';
 import {connect} from 'react-redux';
 
 const AdminView = (props)=>{
@@ -17,7 +18,7 @@ const AdminView = (props)=>{
         }).then(result=>{
           setRender(true);
           setData(result.data.posts);
-          console.log('data==>',data);
+        //   console.log('data==>',data);
         }).catch(err=>{
           console.log(err);
         })    
@@ -148,7 +149,7 @@ const AdminView = (props)=>{
                                 <img className="post-person-img" src={item.postedBy.profilePic} alt="profile_pic" />
                         <div className="post-info">
                                     <strong>{item.postedBy.name}</strong>
-                                    <p>{item.createdAt}</p>
+                                    <p>{Moment(item.createdAt).fromNow()}</p>
                                 </div>
                                 </div>
                                 <div className="post-option">
@@ -176,12 +177,15 @@ const AdminView = (props)=>{
                 <div className="flex-container justify-space">
                         <button className="btn btn-size" onClick={()=>{likePost(item._id)}}><i className="far fa-thumbs-up "></i> Like</button>
                         <button className="btn btn-size" onClick={()=>{dislikePost(item._id)}}><i className="far fa-thumbs-down "></i> Dislike</button>
-                        <span><i className="fas fa-ban "></i></span>
-                        <span >Report{item.reportCount}</span>    
+                        <div>
+                        <span>{item.reportCount}</span>  
+                        <i className="fas fa-flag "></i>
+                        </div>
+                        
                         </div>
                         {
                             item.comments.map(record=>{
-                                console.log('record==>',record);
+                                // console.log('record==>',record);
                                 return(
                                     <div className="flex-container" key={record._id}>
                                         <div className="person-info">

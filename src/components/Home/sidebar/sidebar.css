@@ -4,6 +4,15 @@
 }
 
 
+.profile-view{
+    width: 50%;
+    border-right: 2px solid rgb(133, 133, 133);
+}
+
+.post-details{
+    width: 50%;
+}
+
 .bg-purple{
     background-color: rgb(24, 157, 197);
     width: 100%;

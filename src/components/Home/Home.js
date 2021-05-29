@@ -9,8 +9,10 @@ import Admin from '../Admin/Admin';
 import {connect} from 'react-redux';
 import './Home.css';
 
+
 const Home = (props)=>{
     const [isChecked,setIsChecked] = useState(false);
+
     return(
         <>
         <NavBar />
@@ -24,24 +26,19 @@ const Home = (props)=>{
                  <CreatePost />
                  {
                      props.role==="admin" ?
-                        <div className="form-check">
-                        <input type="checkbox" class="form-check-input"
-                        checked={isChecked}
-                        onChange={(e)=>{setIsChecked(e.target.checked)}}
-                        />
-                        <label className="label info">Moderate Mode</label>
+                        <div className="check">
+                            <label class="switch">
+                                <input type="checkbox"
+                                checked={isChecked}
+                                onChange={(e)=>{setIsChecked(e.target.checked)}}/>
+                                <span class="slider round"><span className="swtich-content">Moderate</span></span>
+                            </label>
                         </div>
-                :<Post />
+                :null
                  }
                  {
-                     isChecked?<Admin />:<Post />
+                     isChecked ?<Admin /> : <Post/>
                  }
-{/*                  
-                 <Moderate ischecked={isChecked}/>
-                 {
-                     (isChecked)?<Admin/>:<Post/>
-                 } */}
-                 {/* <Post /> */}
             </div>
             <div className="col-lg-3">
                 <Contact />

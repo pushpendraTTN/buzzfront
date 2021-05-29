@@ -2,11 +2,13 @@ import React,{useState,useEffect} from 'react';
 import  './createpost.css';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
-const CreatePost = ()=>{
+const CreatePost = (props)=>{
     const [body,setBody] = useState('');
     const [image,setImage] = useState('');
     const [url,setUrl] = useState('');
+
 
     useEffect(()=>{
         if(url){
@@ -19,9 +21,9 @@ const CreatePost = ()=>{
             }
             axios.post('http://localhost:8000/createpost',
                data,{headers:header})
-            .then(res=>res.json())
             .then(data=>{
                 console.log(data);
+                props.updateData(false);
             })
             .catch(err=>{
             console.log(err);
@@ -30,6 +32,7 @@ const CreatePost = ()=>{
 },[url])
 
     const postImage = ()=>{
+        props.updateData(true);
         const data = new FormData();
         data.append("file",image);
         data.append("upload_preset","buzzApp");
@@ -42,12 +45,9 @@ const CreatePost = ()=>{
             .then(res=>res.json())
             .then(data=>{
                 setUrl(data.url);
-                {
                     return(
                         <div class="alert alert-success" role="alert">Sucessfully Created.</div>
                     )
-                }
-
             })
             .catch(err=>{
                 console.log(err);
@@ -68,12 +68,20 @@ const CreatePost = ()=>{
                                     <span id="display-img">{image.name}</span>
                                 </div>
                             <div>
-                            <button  className="btn-our bt-primary" onClick={()=>postImage()}>Post</button>
+                            <button  className="btn-our bt-primary" 
+                            onClick={()=>postImage()}>Post</button>
+                            {/* <button  className="btn-our bt-primary" 
+                            onClick={props.clicked(data)}>Post</button> */}
                             </div>
                         </div>
                     </div>
     )
  }
 
-
-export default CreatePost;
+ const mapDispatchTOProps = (dispatch)=>{
+    return {
+      updateData:(userdata)=>{dispatch({type:'VIEW_USER_PROFILE',payload: userdata})}
+    }
+  }
+  
+export default connect(null,mapDispatchTOProps)(CreatePost);

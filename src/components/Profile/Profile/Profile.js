@@ -23,6 +23,27 @@ const Profile = (props)=>{
             })    
         },[])
 
+        const deletePost = (postid)=>{
+            fetch(`http://localhost:8000/deletepost/${postid}`,{
+                method:"delete",
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization':'Bearer '+Cookies.get('token')
+                }
+            })
+            .then(res=>res.json())
+            .then(result=>{
+                console.log(result);
+                const newData = data.filter(item=>{
+                    return item._id !== result._id
+                })
+                setData(newData);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+          }
+          
       if(!render){return <div>Loading....</div>}
 
     return(
@@ -34,16 +55,12 @@ const Profile = (props)=>{
                             <img src={props.pic} alt="name"/>
                         </div>
                         <div className="profile-info">
-                            <h2>{props.name}</h2>
-                            <p>Worked As {props.designation}</p>
-                            <span>Email:{props.email}</span>
-                            <span>Lived In {}</span>
-                            <span>{}</span>
-                            <span>{} Friends</span>
-                            <EditProfile />
+                            <h2>{props.username}</h2>
+                            <span><strong>Email: </strong>{props.email}</span>
                         </div>
                     </div>
                  </div>  
+                   <EditProfile />
                     {data.map(item=>{
                         return(
                             <div className="post" key={item._id}>

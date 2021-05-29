@@ -7,6 +7,7 @@ const viewOthersProfile = ()=>{
     return(
         <>
         <Navbar />
+        <div className="parallax">
         <div className="container">
             <div className="row">
                 <div className="col-lg-9">
@@ -16,7 +17,8 @@ const viewOthersProfile = ()=>{
                     <Suggestions />
                 </div>
             </div>
-        </div>      
+        </div>  
+        </div>    
         </>
     )
 }

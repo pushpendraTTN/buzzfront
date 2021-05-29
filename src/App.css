@@ -33,6 +33,7 @@ p{
 }
 
 
+
 .container{
   width: 1250px;
 }
@@ -106,9 +107,14 @@ p{
 }
 
 .contact-name{
-  font-size: small;
+    font-size: small;
     margin-top: 12px;
     margin-left: 4px;
+    text-decoration: none;
+    color: #000;
+}
+.contact-name:hover{
+  color: #000;
 }
 
 .contact-btn{

@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import './contact.css';
 import Cookies from 'js-cookie';
-
+import {Link} from 'react-router-dom'
 const Contact=()=>{
     const [data,setData] = useState([]);
     const [render,setRender] = useState(false);
@@ -24,6 +24,7 @@ const Contact=()=>{
                 console.log(err);
             })
     },[]);
+    
     if(!render){return <div>Loading....</div>}
     return(
         <div className="contact">
@@ -39,8 +40,12 @@ const Contact=()=>{
                 return(
                             <div key={item._id}>
                              <div className="flex-container">
-                                <img className="contact-img" src={item.profilePic} alt="user name" />
-                                <p className="contact-name" >{item.name}</p>
+                                <Link to={'/contact-profile/'+item._id}><img className="contact-img" 
+                                src={item.profilePic} alt="user name" />
+                                </Link>
+                                <Link to={'/contact-profile/'+item._id} className="contact-name">
+                                <p >{item.name}</p>
+                                </Link>
                             </div>
                             </div>
                  )

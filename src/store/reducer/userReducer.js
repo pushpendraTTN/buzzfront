@@ -6,7 +6,8 @@ const userData = {
         email: '',
         designation:'',
         website: '',
-        role:''
+        role:'',
+        noOfFriends:''
     }
 
 
@@ -22,11 +23,15 @@ const userData = {
                 email: action.payload.email,
                 designation: action.payload.designation,
                 website: action.payload.website,
-                role: action.payload.role
+                role: action.payload.role,
+                noOfFriends: action.payload.noOfFriends
             }
             case actiontypes.VIEW_USER: return {
                 ...state,
                 id: action.payload.id,
+            }
+            case actiontypes.CLEAR_USER: return {
+                
             }
             default: return state
         }

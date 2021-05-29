@@ -14,6 +14,16 @@ const sidebar = (props)=>{
                         <p>{props.email}</p>
                         <h5 className="profile-name">{props.designation}</h5>
                         <h5 className="profile-name">{props.website}</h5>
+                        <div className="flex-container">
+                          <div className="profile-view">
+                            <strong>220</strong>
+                            <p>Profile Views</p>
+                          </div>
+                          <div className="post-details">
+                          <strong>{props.friends}</strong>
+                          <p>Friends</p>
+                          </div>
+                      </div>
                     </div>
                     </div>
                 </div>
@@ -26,7 +36,8 @@ const mapStateToProps = (state)=>{
       pic: state.user.pic,
       email: state.user.email,
       designation: state.user.designation,
-      website: state.user.website
+      website: state.user.website,
+      friends: state.user.noOfFriends
     }
   }
 

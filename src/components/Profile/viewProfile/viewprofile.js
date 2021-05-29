@@ -26,11 +26,12 @@ const Viewprofile=()=>{
         .catch(err=>{
             console.log(err);
         })
-    },[]);
+    },[userid]);
 
     console.log('userdata==>',userdata);
     return(
         <>
+       
         {
             userdata?
                     <div className="view-profile user">

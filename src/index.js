@@ -7,7 +7,7 @@ import { createStore,combineReducers,applyMiddleware,compose } from 'redux'
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import userReducer from './store/reducer/userReducer';
-import viewUserReducer from './store/reducer/viewUserReducer';
+import viewUserReducer from './store/reducer/postReducer';
 
 
 const composeEnhancers = 

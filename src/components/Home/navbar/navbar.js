@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../navbar/navbar.css';
 import navlogo from '../../../assests/ttn-nav-logo.jpg';
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import {connect} from 'react-redux';
@@ -14,14 +14,18 @@ const Navbar = (props)=>{
   const [designation,setDesignation] = useState('');
   const [website,setWebsite] = useState('');
   const [role,setRole] = useState('');
+  const [noOfFriends,setNoOfFriends] = useState('');
+  // console.log(props.username);
   const userdata = {
     name,
     profile_pic,
     email,
     designation,
     website,
-    role
+    role,
+    noOfFriends
   }
+  let history = useHistory();
 
   useEffect(()=>{
         axios.get('http://localhost:8000/userdetails',{
@@ -37,6 +41,7 @@ const Navbar = (props)=>{
           setDesignation(res.data.designation);
           setWebsite(res.data.website);
           setRole(res.data.role);
+          setNoOfFriends(res.data.friends);
           props.updateData(userdata);
         }).catch(err=>{
           console.log(err);
@@ -44,7 +49,9 @@ const Navbar = (props)=>{
       });
 
       const clear = ()=>{
-        console.log('logout clicked');
+        // console.log('logout clicked');
+        Cookies.remove('token');
+        history.push('/');
       }
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-white">
@@ -69,7 +76,8 @@ const Navbar = (props)=>{
                 </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li><Link className="dropdown-item" to="/notification">Notification</Link></li>
-                  <li><Link className="dropdown-item" to="/logout" 
+                  <li><Link className="dropdown-item" 
+                  // to="/logout" 
                   onClick={()=>{clear()}}
                   >Logout</Link></li>
                 </ul>
@@ -83,13 +91,13 @@ const Navbar = (props)=>{
 
 const mapStateToProps = (state)=>{
   return {
-    username: state.name
+    username: state.user.name
   }
 }
 
 const mapDispatchTOProps = (dispatch)=>{
   return {
-    updateData:(userdata)=>{dispatch({type:'CHANGE_USER',payload: userdata})}
+    updateData:(userdata)=>{dispatch({type:'CHANGE_USER',payload: userdata})},
   }
 }
 

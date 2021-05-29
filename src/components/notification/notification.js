@@ -6,6 +6,7 @@ import './notification.css';
 const Notify = ()=>{
     const [data,setData] = useState([]);
     const [render,setRender] = useState(false);
+    const [isClicked,setIsClicked] = useState(false);
 
     useEffect(()=>{
         fetch('http://localhost:8000/notifications',{
@@ -24,7 +25,7 @@ const Notify = ()=>{
         .catch(err=>{
             console.log(err);
         })
-},[]);  
+},[isClicked]);  
 
     const acceptRequest = (id)=>{
         fetch('http://localhost:8000/accept',{
@@ -40,6 +41,7 @@ const Notify = ()=>{
         .then(res=>res.json())
         .then(result=>{
             console.log(result);
+            setIsClicked(true);
         })
         .catch(err=>{
             console.log(err);
