@@ -2,8 +2,6 @@ import React,{ useState } from 'react'
 import { Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 
-
-
 export default function Suggestion({item}) {
     const [clicked,setClicked] = useState(false);
     

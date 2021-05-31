@@ -5,13 +5,12 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 
 const Edit = (props)=>{
-    console.log('designation ===>',props.designation);
     const [data,setData] = useState([]);
     const [firstName,setFirstName] = useState('');
     const [lastName,setLastName] = useState(props.name);
     const [myWebsite,setWebsite] = useState('');
     const [gender,setGender] = useState('');
-    const [designation,setDesignation] = useState(props.designation);
+    const [designation,setDesignation] = useState('');
     const [DOB,setDob] = useState('');
     const [city,setCity] = useState('');
     const [state,setState] = useState('');
@@ -27,8 +26,10 @@ const Edit = (props)=>{
         setState(props.State);
         setZip(props.zipCode);
         setDob(props.dob);
+        setDesignation(props.designation);
 
     }, [props])
+
     useEffect(()=>{
         axios.get('http://localhost:8000/viewloggedInuserDetails',{
             headers:{
@@ -37,7 +38,6 @@ const Edit = (props)=>{
             }
         }).then(result=>{
           setData(result.data);
-        //   console.log('data==>',data);
         }).catch(err=>{
           console.log(err);
         })    
@@ -72,7 +72,17 @@ const Edit = (props)=>{
         })
       }
 
-      
+      const resetAll = ()=>{
+        setFirstName('');
+        setLastName('');
+        setWebsite('');
+        setGender('');        
+        setCity('');
+        setState('');
+        setZip('');
+        setDob('');
+        setDesignation('');
+      }
     return(
                 <div className="in-feed">
                 <div className="check edit">
@@ -91,7 +101,7 @@ const Edit = (props)=>{
                             }}>
                         <label for="firstname">First Name</label>
                         <label for="lastname">Last Name</label>
-                        <input type="text" placeholder={firstName} id="firstname" 
+                        <input type="text" placeholder="First Name" id="firstname" 
                         value={firstName}
                         onChange={(e)=>setFirstName(e.target.value)}
                         />
@@ -148,7 +158,11 @@ const Edit = (props)=>{
                                         zipCode )
                                 }} 
                             >Save</button>
-                        <button className="btn btn-outline-primary btn-lg">Reset All</button>
+                        <button className="btn btn-outline-primary btn-lg"
+                        onClick={()=>{
+                            resetAll();
+                        }}
+                        >Reset All</button>
                     </form>
                     </div> :
                     null
@@ -160,17 +174,17 @@ const Edit = (props)=>{
 
 const mapStateToProps = (state)=>{
     return {
-      pic: state.user.pic,
-      name: state.user.name,
-      designation: state.user.designation,
-      fname:state.user.fname,
-      lname:state.user.lname,
-      gender:state.user.gender,
-      mywebsite:state.user.website,
-      city:state.user.city,
-      State:state.user.state,
-      zipCode:state.user.zip,
-      dob:state.user.dob
+      pic: state.user.user.pic,
+      name: state.user.user.name,
+      designation: state.user.user.designation,
+      fname:state.user.user.fname,
+      lname:state.user.user.lname,
+      gender:state.user.user.gender,
+      mywebsite:state.user.user.website,
+      city:state.user.user.city,
+      State:state.user.user.state,
+      zipCode:state.user.user.zipCode,
+      dob:state.user.user.DOB
     }
   }
 

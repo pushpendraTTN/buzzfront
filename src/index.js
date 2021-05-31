@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import userReducer from './store/reducer/userReducer';
 import viewUserReducer from './store/reducer/postReducer';
+import verifyUserReducer from './store/reducer/verifyUserReducer';
 import {BrowserRouter} from "react-router-dom";
 
 
@@ -17,7 +18,8 @@ const composeEnhancers =
 
 const reducer = combineReducers({
     user:userReducer,
-    viewuser:viewUserReducer
+    viewuser:viewUserReducer,
+    verifyUser: verifyUserReducer
   });
 
 const store = createStore(reducer,composeEnhancers(applyMiddleware(thunk)));

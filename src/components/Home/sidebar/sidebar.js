@@ -32,12 +32,12 @@ const sidebar = (props)=>{
 
 const mapStateToProps = (state)=>{
     return {
-      username: state.user.name,
-      pic: state.user.pic,
-      email: state.user.email,
-      designation: state.user.designation,
-      website: state.user.website,
-      friends: state.user.noOfFriends
+      username: state.user.user.name,
+      pic: state.user.user.pic,
+      email: state.user.user.email,
+      designation: state.user.user.designation,
+      website: state.user.user.website,
+      friends: state.user.user.friends
     }
   }
 

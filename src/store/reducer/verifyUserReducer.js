@@ -1,13 +1,13 @@
 import * as actiontypes from '../action/actiontype';
 
 const initialState = {
-    user: {}
+    token: ''
 }
 const reducer = (state=initialState,action)=>{
         switch(action.type){
-            case actiontypes.FETCH_USER: return{
+            case actiontypes.STORE_TOKEN: return{
                 ...state,
-                user:action.payload
+                token:action.payload
             }
             default: return state
         }

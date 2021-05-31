@@ -50,8 +50,8 @@ const Navbar = (props)=>{
 
 const mapStateToProps = (state)=>{
   return {
-    username: state.user.name,
-    pic: state.user.pic
+    username: state.user.user.name,
+    pic: state.user.user.pic
   }
 }
 

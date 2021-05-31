@@ -36,7 +36,6 @@ const Suggestion = ()=>{
     const lm = data?.map(e=>(
         <Suggest item={e}/>
     )
-
     )
 
     const findHandler = (event)=>{
@@ -50,18 +49,14 @@ const Suggestion = ()=>{
             setshowSuggestions((p) => 
             ({ ...p, data: searchedSuggestedFriend ? 
                 searchedSuggestedFriend : "no user found" }))
-        } else {
-           
-setshowSuggestions({
+        } else {   
+            setshowSuggestions({
                 type: true,
                 data: false
             })
         }
     }
     return(  
-
-        
-
         <div className="suggestion">
         <div className="in-feed">
         <div className="">
@@ -72,38 +67,8 @@ setshowSuggestions({
                             </div>
                             </div>
                             {showSuggestions.type ? lm : <Suggest item={showSuggestions.data} />}
-                            
                             </div>
     </div>
-    //     {
-    //     data.map(item=>{})
-    //         return(
-    //             <>
-    //             </>
-    //                     // <>
-    //                     // <div className="flex-container justify-space" key={item._id}>
-    //                     //     <div className="contact-info" >
-    //                     //         <Link to={'/view_user/'+item._id}>
-    //                     //         <img className="contact-img"
-    //                     //         src={item.profilePic}
-    //                     //         alt="pic" />
-    //                     //         </Link>
-    //                     //         <Link to={'/view_user/'+item._id} className="contact-name">
-    //                     //         <p >{item.name}</p>
-    //                     //         </Link>
-    //                     //     </div>
-    //                     //     <div className="contact-btn" >
-    //                     //     <button className="btn-our bt-primary bt-medium" id="frd-btn"
-    //                     //     onClick={()=>{sendRequest(item._id)}}
-    //                     //     > +Friend</button>
-    //                     //     </div>
-    //                     // </div>
-    //                     // </> 
-    //         )
-        
-    // }
-   
-    // )
     )
 }
 

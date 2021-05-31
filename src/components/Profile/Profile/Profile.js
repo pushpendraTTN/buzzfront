@@ -99,10 +99,10 @@ const Profile = (props)=>{
 
 const mapStateToProps = (state)=>{
     return {
-      username: state.user.name,
-      pic: state.user.pic,
-      designation: state.user.designation,
-      email: state.user.email
+      username: state.user.user.name,
+      pic: state.user.user.pic,
+      designation: state.user.user.designation,
+      email: state.user.user.email
     }
   }
   

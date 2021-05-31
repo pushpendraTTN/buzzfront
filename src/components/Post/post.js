@@ -11,7 +11,20 @@ const Post = (props)=>{
     const [render,setRender] = useState(false);
 
     useEffect(()=>{
-        axios.get('http://localhost:8000/viewallpost',{
+        // axios.get('http://localhost:8000/viewallpost',{
+        //     headers:{
+        //         "Content-Type":"application/json",
+        //         "Authorization":"Bearer "+Cookies.get('token')
+        //     }
+        // }).then(result=>{
+        //   setRender(true);
+        //   setData(result.data.posts);
+        //     // console.log("heheheh")
+        // //   console.log('data==>',data);
+        // }).catch(err=>{
+        //   console.log(err);
+        // })    
+        axios.get('http://localhost:8000/getfeedPost',{
             headers:{
                 "Content-Type":"application/json",
                 "Authorization":"Bearer "+Cookies.get('token')
@@ -19,14 +32,13 @@ const Post = (props)=>{
         }).then(result=>{
           setRender(true);
           setData(result.data.posts);
-            // console.log("heheheh")
         //   console.log('data==>',data);
         }).catch(err=>{
           console.log(err);
-        })    
+        }) 
       },[props.value]);
 
-      console.log(Moment(data.createdAt).fromNow());
+      
 
       const likePost = (id)=>{
         fetch('http://localhost:8000/like',{
@@ -143,10 +155,9 @@ const Post = (props)=>{
       
 
       if(!render){return <div>Loading....</div>}
-    //   console.log(data);
       let toView = <div>Loading....</div>;
       if(!props.value){
-          toView=data.map(item=>{
+          toView=data?.map(item=>{
             return(
                 <>
                         <div className="post" key={item._id}>
@@ -193,7 +204,7 @@ const Post = (props)=>{
                         <i class="far fa-flag"></i></button>
                 </div>
                         {
-                            item.comments.map(record=>{
+                            item.comments?.map(record=>{
                                 // console.log('record==>',record);
                                 return(
                                         <div className="flex-container" key={record._id}>
@@ -240,7 +251,7 @@ const Post = (props)=>{
      
 const mapStateToProps = (state)=>{
     return {
-      pic: state.user.pic,
+      pic: state.user.user.pic,
       value: state.viewuser.id
     }
   }
