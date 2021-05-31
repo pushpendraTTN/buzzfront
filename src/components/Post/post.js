@@ -160,8 +160,9 @@ const Post = (props)=>{
                                     <p>{Moment(item.createdAt).fromNow()}</p>
                                 </div>
                                 </div>
-                                <div className="post-option">
-                                <i className="fas fa-ellipsis-h"></i></div>
+                                {/* <div className="post-option">
+                                <i className="fas fa-ellipsis-h"></i>
+                                </div> */}
                         </div>
                          <p>{item.body}</p>
                 <img className="post-img" src={item.photo} alt="pic" />
@@ -176,8 +177,8 @@ const Post = (props)=>{
                             <div className="like-info">
                                 <span>{item.comments.length}</span>
                                 <i className="far fa-comment comment"></i>
-                                <span>{item.report.length}</span>
-                                <i class="fas fa-flag"></i>
+                                {/* <span>{item.report.length}</span>
+                                <i class="fas fa-flag"></i> */}
                             </div>
                 </div>
 

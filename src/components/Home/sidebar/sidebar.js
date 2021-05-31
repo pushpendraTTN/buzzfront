@@ -11,9 +11,9 @@ const sidebar = (props)=>{
                     <div className="feed-profile">
                         <img className="feed-profile-img" src={props.pic} alt="" />
                         <h4 className="profile-name">{props.username}</h4>
-                        <p>{props.email}</p>
-                        <h5 className="profile-name">{props.designation}</h5>
-                        <h5 className="profile-name">{props.website}</h5>
+                        <p><strong>{props.email}</strong></p>
+                        <strong className="profile-name">{props.designation}</strong>
+                        <p><strong className="profile-name">{props.website}</strong></p>
                         <div className="flex-container">
                           <div className="profile-view">
                             <strong>220</strong>

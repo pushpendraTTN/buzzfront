@@ -24,7 +24,13 @@ const userData = {
                 designation: action.payload.designation,
                 website: action.payload.website,
                 role: action.payload.role,
-                noOfFriends: action.payload.noOfFriends
+                noOfFriends: action.payload.noOfFriends,
+                city:action.payload.city,
+                state:action.payload.state,
+                zip:action.payload.zipCode,
+                dob:action.payload.dob,
+                fname:action.payload.fname,
+                lname:action.payload.lname
             }
             case actiontypes.VIEW_USER: return {
                 ...state,

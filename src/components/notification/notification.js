@@ -50,7 +50,8 @@ const Notify = ()=>{
 
     if(!render){return <div>Loading....</div>}
 
-    return(<>
+    return(
+        <>
         <Navbar />
         <div className="parallax notification-wrapper">
         <div className="container">     

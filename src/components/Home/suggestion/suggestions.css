@@ -2,9 +2,24 @@
 
 .suggestion{
     margin: 4% 0;
+    text-align: left;
 }
 
 .contact-info{
     display: flex;
     width: 80%;
+}
+
+
+/* search */
+.search{
+    border: none;
+    border-bottom: 1px solid #000;
+    font-size: small;
+    width: 80%;
+}
+
+.search:target{
+    border: none;
+
 }

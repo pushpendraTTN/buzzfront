@@ -3,6 +3,7 @@ import EditProfile from '../editprofile/editProfile';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import {connect} from 'react-redux';
+import Moment from 'moment';
 
 const Profile = (props)=>{
     const [data,setData] = useState([]);
@@ -71,7 +72,7 @@ const Profile = (props)=>{
                                         alt="profile_pic" />
                                     <div className="post-info">
                                         <strong>{item.postedBy.name}</strong>
-                                        <p>{item.createdAt}</p>
+                                        <p>{Moment(item.createdAt).fromNow()}</p>
                                     </div>
                                     </div>
                                 </div>
@@ -83,16 +84,15 @@ const Profile = (props)=>{
                                 <span>{item.likes.length}</span>
                                 <i className="far fa-thumbs-down dislike"></i>
                                 <span>{item.dislikes.length}</span>
-                            </div>
-                            <div>
-                                <span>{item.comments.length}</span>
                                 <i className="far fa-comment comment"></i>
+                                <span>{item.comments.length}</span>
                             </div>
                             <div></div>
                             </div>
                             </div>
                         )
                     })}
+                    
                 </>                    
     )
 }

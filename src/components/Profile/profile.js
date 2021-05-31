@@ -8,6 +8,7 @@ const profile = ()=>{
     return(
         <>
         <Navbar />
+        <div className="parallax">
         <div className="container">
             <div className="row">
                 <div className="col-lg-9">
@@ -17,7 +18,8 @@ const profile = ()=>{
                     <Suggestions />
                 </div>
             </div>
-        </div>      
+        </div> 
+        </div>     
         </>
     )
 }

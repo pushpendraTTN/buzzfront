@@ -1,12 +1,15 @@
 import React,{useState,useEffect} from 'react';
 import './suggestions.css';
 import Cookies from 'js-cookie';
-import { Link } from "react-router-dom";
+import Suggest from './suggestion/suggestion'
 
 const Suggestion = ()=>{
     const [data,setData] = useState([]);
+    const [showSuggestions, setshowSuggestions] = useState({
+        type: true,
+        data: null
+    })
     const [render,setRender] = useState(false);
-    const [clicked,setClicked] = useState(false);
 
     useEffect(()=>{
             fetch('http://localhost:8000/user/suggestions',{
@@ -25,65 +28,82 @@ const Suggestion = ()=>{
             .catch(err=>{
                 console.log(err);
             })
-    },[clicked]);  
-    const sendRequest = (id)=>{
-        fetch('http://localhost:8000/request',{
-            method:"post",
-            headers:{
-                'Content-Type':'application/json',
-                'Authorization':'Bearer '+Cookies.get('token')
-            },
-            body:JSON.stringify({
-                id
-            })
-        })
-        .then(res=>res.json())
-        .then(result=>{
-            console.log(result);
-            setClicked(true);
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-    }
+    },[]);  
+   
     
     if(!render){return <div>Loading....</div>}
+
+    const lm = data?.map(e=>(
+        <Suggest item={e}/>
+    )
+
+    )
+
+    const findHandler = (event)=>{
+        if (event.target.value) {
+            setshowSuggestions({
+                type: false,
+                data: false
+            })
+            const searchedSuggestedFriend = data.find((e) => e.name?.toLowerCase() == event.target.value || e.email?.toLowerCase() == event.target.value)
+            // console.log(searchedSuggestedFriend)
+            setshowSuggestions((p) => 
+            ({ ...p, data: searchedSuggestedFriend ? 
+                searchedSuggestedFriend : "no user found" }))
+        } else {
+           
+setshowSuggestions({
+                type: true,
+                data: false
+            })
+        }
+    }
     return(  
+
+        
+
         <div className="suggestion">
         <div className="in-feed">
-        <div className="flex-container justify-space">
+        <div className="">
                             <h4>Suggestions</h4>
-                            <div className="search-icon ">
+                            <div className="search-icon flex-container justify-space ">
+                            <input className="search" type="text" placeholder="Type to Search..." onChange={findHandler}/>              
                                 <i className="fas fa-search"></i>
                             </div>
                             </div>
-        {
-        data.map(item=>{
-            return(
-                        <>
-                        <div className="flex-container justify-space" key={item._id}>
-                            <div className="contact-info" >
-                                <Link to={'/view_user/'+item._id}>
-                                <img className="contact-img"
-                                src={item.profilePic}
-                                alt="pic" />
-                                </Link>
-                                <Link to={'/view_user/'+item._id} className="contact-name">
-                                <p >{item.name}</p>
-                                </Link>
+                            {showSuggestions.type ? lm : <Suggest item={showSuggestions.data} />}
+                            
                             </div>
-                            <div className="contact-btn" >
-                            <button className="btn-our bt-primary bt-medium" id="frd-btn"
-                            onClick={()=>{sendRequest(item._id)}}
-                            > +Friend</button>
-                            </div>
-                        </div>
-                        </> 
-            )
-        })
-    }
     </div>
-    </div>
+    //     {
+    //     data.map(item=>{})
+    //         return(
+    //             <>
+    //             </>
+    //                     // <>
+    //                     // <div className="flex-container justify-space" key={item._id}>
+    //                     //     <div className="contact-info" >
+    //                     //         <Link to={'/view_user/'+item._id}>
+    //                     //         <img className="contact-img"
+    //                     //         src={item.profilePic}
+    //                     //         alt="pic" />
+    //                     //         </Link>
+    //                     //         <Link to={'/view_user/'+item._id} className="contact-name">
+    //                     //         <p >{item.name}</p>
+    //                     //         </Link>
+    //                     //     </div>
+    //                     //     <div className="contact-btn" >
+    //                     //     <button className="btn-our bt-primary bt-medium" id="frd-btn"
+    //                     //     onClick={()=>{sendRequest(item._id)}}
+    //                     //     > +Friend</button>
+    //                     //     </div>
+    //                     // </div>
+    //                     // </> 
+    //         )
+        
+    // }
+   
+    // )
     )
 }
 

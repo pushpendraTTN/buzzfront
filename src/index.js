@@ -8,6 +8,8 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import userReducer from './store/reducer/userReducer';
 import viewUserReducer from './store/reducer/postReducer';
+import {BrowserRouter} from "react-router-dom";
+
 
 
 const composeEnhancers = 
@@ -24,11 +26,13 @@ const store = createStore(reducer,composeEnhancers(applyMiddleware(thunk)));
 // const store = createStore(userReducer);
 
 ReactDOM.render(
+  <BrowserRouter>
   <Provider store={store}>
   <React.StrictMode>
     <App />
   </React.StrictMode>
-  </Provider>,
+  </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
