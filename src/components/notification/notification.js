@@ -28,6 +28,7 @@ const Notify = ()=>{
 },[isClicked]);  
 
     const acceptRequest = (id)=>{
+        setIsClicked(true);
         fetch('http://localhost:8000/accept',{
             method:"put",
             headers:{
@@ -41,10 +42,11 @@ const Notify = ()=>{
         .then(res=>res.json())
         .then(result=>{
             console.log(result);
-            setIsClicked(true);
+            setIsClicked(false);
         })
         .catch(err=>{
             console.log(err);
+            setIsClicked(false);
         })
     }
 

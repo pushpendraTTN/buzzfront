@@ -5,6 +5,7 @@ import Suggest from './suggestion/suggestion'
 
 const Suggestion = ()=>{
     const [data,setData] = useState([]);
+    const [suggestClicked,setSuggestClicked] = useState(false);
     const [showSuggestions, setshowSuggestions] = useState({
         type: true,
         data: null
@@ -28,13 +29,16 @@ const Suggestion = ()=>{
             .catch(err=>{
                 console.log(err);
             })
-    },[]);  
+    },[suggestClicked]);  
    
-    
+    const onSuggestClickHandler = ()=>{
+        setSuggestClicked(!suggestClicked);
+    }
+
     if(!render){return <div>Loading....</div>}
 
     const lm = data?.map(e=>(
-        <Suggest item={e}/>
+        <Suggest item={e} addClicked={()=>onSuggestClickHandler()}/>
     )
     )
 

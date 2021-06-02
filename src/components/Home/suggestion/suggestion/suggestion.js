@@ -2,10 +2,11 @@ import React,{ useState } from 'react'
 import { Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 
-export default function Suggestion({item}) {
-    const [clicked,setClicked] = useState(false);
+export default function Suggestion({item,addClicked}) {
+    // const [clicked,setClicked] = useState(false);
     
     const sendRequest = (id)=>{
+
         fetch('http://localhost:8000/request',{
             method:"post",
             headers:{
@@ -19,7 +20,8 @@ export default function Suggestion({item}) {
         .then(res=>res.json())
         .then(result=>{
             console.log(result);
-            setClicked(true);
+            addClicked()
+            // setClicked(true);
         })
         .catch(err=>{
             console.log(err);

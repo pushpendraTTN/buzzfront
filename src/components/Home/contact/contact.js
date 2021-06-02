@@ -31,9 +31,9 @@ const Contact=()=>{
             <div className="in-feed">
             <div className="flex-container justify-space">
                             <h4>Contact</h4>
-                            <div className="search-icon ">
+                            {/* <div className="search-icon ">
                                 <i className="fas fa-search"></i>
-                            </div>
+                            </div> */}
                         </div>
         {
             data.map((item)=>{
