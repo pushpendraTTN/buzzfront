@@ -24,6 +24,8 @@ const CreatePost = (props)=>{
             .then(data=>{
                 console.log(data);
                 props.updateData(false);
+                setBody('');
+                setImage('');
             })
             .catch(err=>{
             console.log(err);
@@ -58,7 +60,9 @@ const CreatePost = (props)=>{
         
                     <div className="post">
                         <h4>Create Post</h4>
-                        <textarea id="#" name="#" value={body} rows="2" cols="50" className="post-textarea" 
+                        <textarea id="#" name="#" 
+                        value={body} 
+                        rows="2" cols="50" className="post-textarea" 
                         placeholder="What's On Your Mind..." 
                         onChange={(e)=>{setBody(e.target.value)}}></textarea>
                         <div className="button-div">
