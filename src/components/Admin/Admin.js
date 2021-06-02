@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 const AdminView = (props)=>{
     const [data,setData] = useState([]);
     const [render,setRender] = useState(false);
+    const [isClicked,setIsClicked] = useState(false);
 
     useEffect(()=>{
         axios.get('http://localhost:8000/admin/viewallpost',{
@@ -22,9 +23,10 @@ const AdminView = (props)=>{
         }).catch(err=>{
           console.log(err);
         })    
-      },[]);
+      },[isClicked]);
 
       const deletePost = (postId)=>{
+          setIsClicked(false);
         fetch(`http://localhost:8000/admin/deletepost`,{
             method:"delete",
             headers:{
@@ -44,6 +46,7 @@ const AdminView = (props)=>{
                 return item._id !== result._id
             })
             setData(newData);
+          setIsClicked(true);
         })
         .catch(err=>{
             console.log(err);
@@ -228,7 +231,7 @@ const AdminView = (props)=>{
 
 const mapStateToProps = (state)=>{
     return {
-      pic: state.user.pic
+      pic: state.user.user.pic
     }
   }
 export default connect(mapStateToProps)(AdminView);
