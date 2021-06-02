@@ -7,7 +7,7 @@ import axios from 'axios';
 const Edit = (props)=>{
     const [data,setData] = useState([]);
     const [firstName,setFirstName] = useState('');
-    const [lastName,setLastName] = useState(props.name);
+    const [lastName,setLastName] = useState('');
     const [myWebsite,setWebsite] = useState('');
     const [gender,setGender] = useState('');
     const [designation,setDesignation] = useState('');
@@ -25,7 +25,16 @@ const Edit = (props)=>{
         setCity(props.city);
         setState(props.State);
         setZip(props.zipCode);
-        setDob(props.dob);
+        {
+            if(props.dob==null){
+                setDob('');
+            }
+            else{
+                setDob(props.dob.slice(0,10));
+            }
+        }
+       
+        
         setDesignation(props.designation);
 
     }, [props])
@@ -121,11 +130,17 @@ const Edit = (props)=>{
                         />
                         <label htmlFor="gender">Gender</label>
                         <label htmlFor="birthday">Birthday</label>
-                        <input type="text" id="gender"  
+                        {/* <input type="text" id="gender"  
                         value={gender}
                             onChange={(e)=>setGender(e.target.value)}
-                        />
-                        <input type="text" placeholder="MM/DD/YYYY" id="birthday" 
+                        /> */}
+                        <select name="Gender" id="Gender" 
+                         onChange={(e)=>setGender(e.target.value)}>  
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option selected value="Other">Other</option>
+                                    </select>
+                        <input type="text" placeholder="YYYY/DD/MM" id="birthday" 
                          value={DOB}
                             onChange={(e)=>setDob(e.target.value)}
                         />
